@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
+import JamIcon from '../../../components/icon/jam';
 import MapIcon from '../../../components/icon/map';
-import PhoneIcon from '../../../components/icon/phone';
 import { getRumahMakan } from '../../../services/desaDigital.services';
 import HeaderRumahMakan from '../../../components/layout/headerrumahmakan';
 export default function RumahMakan({ navigation }) {
@@ -44,19 +44,17 @@ export default function RumahMakan({ navigation }) {
         <TouchableOpacity style={style.bg} onPress={() => goDetail(item.id)}>
             <Image source={{ uri: item.gambar }} style={style.img} />
             <Text style={style.title}>{item.namaRumahMakan}</Text>
-            <View style={{ display: 'flex', flexDirection: 'row', margin: 5, alignItems: 'center' }}>
-                <Text style={{ fontSize: 12, color: "#8C7979" }}>{item.des}</Text>
-                <Text style={style.price}>{truncateText(item.deskripsi, 50)}</Text>
+            <View style={style.jadwal}>
+                <JamIcon />
+                <Text style={style.txtJadwal}>{item.waktuOperasi}</Text>
             </View>
-           
             <View style={style.location}>
                 <MapIcon />
                 <Text style={style.txtLocation}>{item.lokasi}</Text>
             </View>
-            <TouchableOpacity>
-                <Text style={{ margin: 5 }}>
-                    Selengkapnya
-                </Text>
+            <Text style={style.deskripsi}>{item.deskripsi}</Text>
+            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('rumah-makan-detail', { id: item.id })}>
+                                <Text style={style.btnText}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -100,24 +98,37 @@ const style = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 14,
+        fontSize: 20,
+        paddingTop: 5,
+        paddingLeft: 5,
         margin: 3,
-        fontWeight: '800'
+        fontWeight: '800',
     },
-    price: {
-        color: '#E13A3A',
-        fontSize: 12,
-        margin: 3,
+    deskripsi: {
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 14,
     },
     location: {
+        paddingLeft: 5,
         flexDirection: 'row',
         alignItems: 'center',
         margin: 3,
-        width: 150
     },
     txtLocation: {
         color: '#1877F2',
     },
+    jadwal: {
+        flexDirection: 'row',
+        alignItems: 'top',
+        marginTop: 5,
+        paddingLeft: 10
+   },
+   txtJadwal: {
+      paddingLeft: 4,
+      fontSize: 14,
+      paddingRight: 5
+   },
     bg: {
         flex: 1,
         margin: 5,
@@ -131,4 +142,20 @@ const style = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
+    btn: {
+        backgroundColor: '#0890EA',
+        width: 100,
+        height: 25,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'flex-end',
+        marginTop: 5,
+        marginBottom: 10,
+        marginRight: 10,
+    },
+    btnText: {
+        color: '#ffffff',
+        fontSize: 12,
+    }
 });

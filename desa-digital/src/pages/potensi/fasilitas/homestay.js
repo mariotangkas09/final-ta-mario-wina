@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react
 import HeaderHomestay from '../../../components/layout/headerHomestay';
 import MapIcon from '../../../components/icon/map';
 import PhoneIcon from '../../../components/icon/phone';
+import JamIcon from '../../../components/icon/jam';
 import { getHomestay } from '../../../services/desaDigital.services';
 
 export default function Homestay({ navigation }) {
@@ -45,22 +46,21 @@ export default function Homestay({ navigation }) {
         <TouchableOpacity style={style.bg} onPress={() => goDetail(item.id)}>
             <Image source={{ uri: item.gambar1 }} style={style.img} />
             <Text style={style.title}>{item.namaPenginapan}</Text>
-            <View style={{ display: 'flex', flexDirection: 'row', margin: 5, alignItems: 'center' }}>
-                <Text style={{ fontSize: 12, color: "#8C7979" }}>{item.des}</Text>
-                <Text style={style.price}>{truncateText(item.deskripsi, 50)}</Text>
-            </View>
-            <View style={style.location}>
-                <PhoneIcon />
-                <Text style={style.txtLocation}>{item.kontak}</Text>
+            <View style={style.jadwal}>
+                <JamIcon />
+                <Text style={style.txtJadwal}>{item.contactPerson}</Text>
             </View>
             <View style={style.location}>
                 <MapIcon />
                 <Text style={style.txtLocation}>{item.lokasi}</Text>
             </View>
-            <TouchableOpacity>
-                <Text style={{ margin: 5 }}>
-                    Selengkapnya
-                </Text>
+            <View style={style.location}>
+                <PhoneIcon />
+                <Text style={style.txtLocation}>{item.kontak}</Text>
+            </View>
+            <Text style={style.deskripsi}>{item.deskripsi}</Text>
+            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('detail-ibadah', { id: item.id })}>
+                                <Text style={style.btnText}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -104,23 +104,51 @@ const style = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 14,
+        fontSize: 20,
+        paddingTop: 5,
+        paddingLeft: 5,
         margin: 3,
-        fontWeight: '800'
+        fontWeight: '800',
     },
-    price: {
-        color: '#E13A3A',
-        fontSize: 12,
-        margin: 3,
+    jadwal: {
+        flexDirection: 'row',
+        alignItems: 'top',
+        alignItems:'center',
+        paddingLeft: 10,
+     
+    },
+    txtJadwal: {
+        paddingLeft: 4,
+    },
+    deskripsi: {
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 14,
     },
     location: {
+        paddingLeft: 5,
         flexDirection: 'row',
         alignItems: 'center',
         margin: 3,
-        width: 150
     },
     txtLocation: {
         color: '#1877F2',
+    },
+    btn: {
+        backgroundColor: '#0890EA',
+        width: 100,
+        height: 25,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'flex-end',
+        marginTop: 5,
+        marginBottom: 10,
+        marginRight: 10,
+    },
+    btnText: {
+        color: '#ffffff',
+        fontSize: 12,
     },
     bg: {
         flex: 1,

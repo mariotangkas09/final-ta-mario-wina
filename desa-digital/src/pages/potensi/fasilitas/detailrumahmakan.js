@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../../components/layout/footer';
 import { View, StyleSheet, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
-import PhoneIcon from '../../../components/icon/phone';
 import { getRumahMakanDetail } from '../../../services/desaDigital.services';
 import MapIcon from '../../../components/icon/map';
 import HeaderRumahMakan from '../../../components/layout/headerrumahmakan';
@@ -79,12 +78,6 @@ export default function DetailRumahMakan({ navigation, route }) {
                     <Text style={styles.des}>
                        {homestayDetail.isiKonten}
                     </Text>
-                    <View style={styles.boxF}>
-                        <PhoneIcon size={21} />
-                        <Text style={styles.ket}>
-                            {homestayDetail.kontak}
-                        </Text>
-                    </View>
                 </ScrollView>
             </View>
             <Footer navigation={navigation} />
@@ -134,12 +127,6 @@ const styles = StyleSheet.create({
     },
     priseR: {
         marginLeft: 5,
-    },
-    boxF: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 5,
     },
     ket: {
         marginLeft: 10,

@@ -43,14 +43,15 @@ export default function Fasilitas({ navigation }) {
                               </TouchableOpacity>
                          </View>
                     </View>
-                    <View>
-                         <TouchableOpacity onPress={goHomestay}>
-                               <Image source={homestay} />
-                         <Text style={styles.txtH}>
-                              Homestay
-                         </Text>
-                         </TouchableOpacity>
-                        
+                    <View style={styles.box}>
+                         <View>
+                              <TouchableOpacity onPress={goHomestay}>
+                                   <Image source={homestay}/>
+                              <Text style={styles.txtH}>
+                                   Homestay
+                              </Text>
+                              </TouchableOpacity>
+                         </View>
                     </View>
                     <View style={styles.box}>
                          <View>
@@ -92,20 +93,22 @@ const styles = StyleSheet.create({
           flexDirection:'row',
           justifyContent:'space-between',
           marginTop:10,
+          paddingRight: 22,
+          paddingLeft: 22,
           marginBottom:10
      },
      txtH:{
           position:'absolute',
-          marginTop:150,
-          marginLeft:9,
-          fontSize:16,
+          marginTop:137,
+          marginLeft:19,
+          fontSize:26,
           color:'#FFFFFF',
           fontWeight:'900'
      },
      txt:{
           position:'absolute',
-          marginTop:180,
-          marginLeft:9,
+          marginTop:184,
+          marginLeft:19,
           fontSize:16,
           color:'#FFFFFF',
           fontWeight:'900'

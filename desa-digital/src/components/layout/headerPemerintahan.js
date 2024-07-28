@@ -4,7 +4,7 @@ import ArrowIcon from '../../components/icon/arrowLeft';
 
 export default function HeaderPemerintahan({ navigation }) {
      const navigateHome = () => {
-          navigation.navigate('home');
+          navigation.navigate('profile');
      };
      return (
           <View style={styles.header}>

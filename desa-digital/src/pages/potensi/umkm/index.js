@@ -31,7 +31,7 @@ export default function UMKM({navigation}) {
                          <TouchableOpacity style={style.box} onPress={goSuvenir}>
                               <Image source={suvenir} />
                               <Text style={style.txt}>
-                                   Suvenir
+                                   Souvenir
                               </Text>
                          </TouchableOpacity>
                     </View>
@@ -58,11 +58,11 @@ const style = StyleSheet.create({
      },
      content: {
           flex: 1,
-          marginBottom: 10
+          marginBottom: 20
      },
      txt: {
           position: 'absolute',
-          fontSize: 26,
+          fontSize: 29,
           color: "#FFFFFF",
           fontWeight: '600'
      },
@@ -73,6 +73,7 @@ const style = StyleSheet.create({
           alignItems: 'center'
      },
      BoxCategory: {
-          marginTop: 20
+          marginTop: 40,
+          marginBottom: 10
      }
 })
