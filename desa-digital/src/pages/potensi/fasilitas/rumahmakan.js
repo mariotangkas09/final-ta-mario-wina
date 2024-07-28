@@ -53,8 +53,8 @@ export default function RumahMakan({ navigation }) {
                 <Text style={style.txtLocation}>{item.lokasi}</Text>
             </View>
             <Text style={style.deskripsi}>{item.deskripsi}</Text>
-            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('rumah-makan-detail', { id: item.id })}>
-                                <Text style={style.btnText}>Selengkapnya</Text>
+            <TouchableOpacity style={style.link} onPress={() => navigation.navigate('rumah-makan-detail', { id: item.id })}>
+                <Text style={{ color: '#0369A1' }}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -142,20 +142,9 @@ const style = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
-    btn: {
-        backgroundColor: '#0890EA',
-        width: 100,
-        height: 25,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'flex-end',
-        marginTop: 5,
-        marginBottom: 10,
-        marginRight: 10,
+    link: {
+        marginTop: 3,
+        marginLeft: 10,
+        marginBottom: 4 
     },
-    btnText: {
-        color: '#ffffff',
-        fontSize: 12,
-    }
 });

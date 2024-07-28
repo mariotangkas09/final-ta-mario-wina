@@ -7,10 +7,10 @@ import { getPengumuman } from "../../services/desaDigital.services";
 export default function Pengumuman({ navigation }) {
      const [searchQuery, setSearchQuery] = useState('');
      const [pengumuman, setPengumuman] = useState([]);
-     
-     useEffect(() =>{
-          const fetchPengumuman = async () =>{
-               try{
+
+     useEffect(() => {
+          const fetchPengumuman = async () => {
+               try {
                     const data = await getPengumuman();
                     setPengumuman(data);
                }
@@ -19,7 +19,7 @@ export default function Pengumuman({ navigation }) {
                }
           }
           fetchPengumuman();
-     },[])
+     }, [])
 
      const formatDate = (tgl) => {
           const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -54,27 +54,27 @@ export default function Pengumuman({ navigation }) {
                          <FontAwesome name='search' size={18} color='grey' style={styles.search} />
                     </View>
                     <ScrollView>
-                         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',marginBottom:10,alignItems:'center' }}>
-                              {filteredPengumuman.map(pengumumanData => 
-                              <View style={styles.cardNews} key={pengumumanData.id}>
-                                   <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
-                                        <Image source={{ uri: `https://api-admin.desasosordolok.id/api/pengumuman_cover/${pengumumanData.file_pengumuman}` }} width={95} height={95} borderRadius={5} />
-                                   </View>
-                                   <View style={styles.contentNews}>
-                                        <Text style={styles.judul}>{pengumumanData.judul_pengumuman}</Text>
-                                        <Text style={styles.waktu}>
-                                        {formatDate(pengumumanData.tgl_publikasi)}
-                                        </Text>
-                                        <Text style={styles.deskripsi}>
-                                        {truncateText(cleanHTMLTags(pengumumanData.deskripsi_pengumuman), 32)}
-                                        </Text>
-                                        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: 195 }}>
-                                             <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-pengumuman', { id: pengumumanData.id })}>
-                                                  <Text style={styles.btnText}>Selengkapnya</Text>
-                                             </TouchableOpacity>
+                         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: 10, alignItems: 'center' }}>
+                              {filteredPengumuman.map(pengumumanData =>
+                                   <View style={styles.cardNews} key={pengumumanData.id}>
+                                        <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
+                                             <Image source={{ uri: `https://api-admin.desasosordolok.id/api/pengumuman_cover/${pengumumanData.file_pengumuman}` }} width={95} height={95} borderRadius={5} />
+                                        </View>
+                                        <View style={styles.contentNews}>
+                                             <Text style={styles.judul}>{pengumumanData.judul_pengumuman}</Text>
+                                             <Text style={styles.waktu}>
+                                                  {formatDate(pengumumanData.tgl_publikasi)}
+                                             </Text>
+                                             <Text style={styles.deskripsi}>
+                                                  {truncateText(cleanHTMLTags(pengumumanData.deskripsi_pengumuman), 32)}
+                                             </Text>
+                                             <View style={styles.btnlocation}>
+                                                  <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-berita', { id: beritaData.id })}>
+                                                       <Text style={styles.btnText}>Selengkapnya</Text>
+                                                  </TouchableOpacity>
+                                             </View>
                                         </View>
                                    </View>
-                              </View>
                               )}
                          </View>
                     </ScrollView>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
           borderRadius: 30,
           width: '100%',
           padding: 8,
-          paddingLeft:20
+          paddingLeft: 20
      },
      boxSearch: {
           flexDirection: 'row',
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
           position: 'absolute',
           right: 25,
           top: 10,
-         
+
      },
      judul: {
           fontSize: 12,
@@ -136,11 +136,16 @@ const styles = StyleSheet.create({
           borderRadius: 15,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
      },
      btnText: {
           color: '#ffffff',
           fontSize: 12,
+     },
+     btnlocation: {
+          position: 'absolute',
+          left: 100,
+          bottom: 8,
      },
      cardNews: {
           width: 325,

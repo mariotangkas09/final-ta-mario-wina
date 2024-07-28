@@ -27,49 +27,49 @@ export default function Fasilitas({ navigation }) {
           <View style={styles.container}>
                <HeaderFasilitas navigation={navigation} />
                <View style={styles.content}>
-                   <ScrollView>
-                   <View style={styles.box}>
-                         <View>
-                              <TouchableOpacity onPress={goKesehatan}>
-                                    <Image source={kesehatan} />
-                              <Text style={styles.txt}>Kesehatan</Text>
-                              </TouchableOpacity>
-                             
+                    <ScrollView>
+                         <View style={styles.box}>
+                              <View>
+                                   <TouchableOpacity onPress={goKesehatan}>
+                                        <Image source={kesehatan} />
+                                        <Text style={styles.txt}>Kesehatan</Text>
+                                   </TouchableOpacity>
+
+                              </View>
+                              <View>
+                                   <TouchableOpacity onPress={goIbadah}>
+                                        <Image source={ibadah} />
+                                        <Text style={styles.txt}>Rumah Ibadah</Text>
+                                   </TouchableOpacity>
+                              </View>
                          </View>
-                         <View>
-                              <TouchableOpacity onPress={goIbadah}>
-                              <Image source={ibadah}/>
-                              <Text style={styles.txt}>Rumah Ibadah</Text>
-                              </TouchableOpacity>
+                         <View style={styles.box}>
+                              <View>
+                                   <TouchableOpacity onPress={goHomestay}>
+                                        <Image style={styles.homestay} source={homestay} />
+                                        <Text style={styles.txtH}>
+                                             Homestay
+                                        </Text>
+                                   </TouchableOpacity>
+                              </View>
                          </View>
-                    </View>
-                    <View style={styles.box}>
-                         <View>
-                              <TouchableOpacity onPress={goHomestay}>
-                                   <Image source={homestay}/>
-                              <Text style={styles.txtH}>
-                                   Homestay
-                              </Text>
-                              </TouchableOpacity>
+                         <View style={styles.box}>
+                              <View>
+                                   <TouchableOpacity onPress={goMakanan}>
+                                        <Image source={makan} />
+                                        <Text style={styles.txt}>Rumah Makan</Text>
+                                   </TouchableOpacity>
+
+                              </View>
+                              <View>
+                                   <TouchableOpacity onPress={goBank}>
+                                        <Image source={bank} />
+                                        <Text style={styles.txt}>Bank</Text>
+                                   </TouchableOpacity>
+
+                              </View>
                          </View>
-                    </View>
-                    <View style={styles.box}>
-                         <View>
-                              <TouchableOpacity onPress={goMakanan}>
-                                 <Image source={makan} />
-                              <Text style={styles.txt}>Rumah Makan</Text>  
-                              </TouchableOpacity>
-                              
-                         </View>
-                         <View>
-                              <TouchableOpacity onPress={goBank}>
-                              <Image source={bank}/>
-                              <Text style={styles.txt}>Bank</Text>
-                              </TouchableOpacity>
-                              
-                         </View>
-                    </View>
-                   </ScrollView>
+                    </ScrollView>
                </View>
                <Footer navigation={navigation} />
           </View>
@@ -88,30 +88,32 @@ const styles = StyleSheet.create({
           margin: 18,
 
      },
-     box:{
-          display:'flex',
-          flexDirection:'row',
-          justifyContent:'space-between',
-          marginTop:10,
-          paddingRight: 22,
-          paddingLeft: 22,
-          marginBottom:10
+     box: {
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginTop: 10,
+          paddingRight: 15,
+          paddingLeft: 15,
+          marginBottom: 10
      },
-     txtH:{
-          position:'absolute',
-          marginTop:137,
-          marginLeft:19,
-          fontSize:26,
-          color:'#FFFFFF',
-          fontWeight:'900'
+     homestay: {
+          width: 345,
      },
-     txt:{
-          position:'absolute',
-          marginTop:184,
-          marginLeft:19,
-          fontSize:16,
-          color:'#FFFFFF',
-          fontWeight:'900'
+     txtH: {
+          position: 'absolute',
+          marginTop: 137,
+          marginLeft: 19,
+          fontSize: 26,
+          color: '#FFFFFF',
+          fontWeight: '900'
+     },
+     txt: {
+          position: 'absolute',
+          marginTop: 184,
+          marginLeft: 19,
+          fontSize: 16,
+          color: '#FFFFFF',
+          fontWeight: '900'
      }
-
 });

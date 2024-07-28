@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import HeaderDetailMakanan from '../../../components/layout/headerDetailMakanan';
 import { getUmkmDetail } from '../../../services/desaDigital.services';
-import MapIcon from '../../../components/icon/map';
 import WaIcon from '../../../components/icon/waIcon';
 import makanan from '../../../../assets/umkm/makanan/makanan.png';  // Pastikan path ini benar
 
@@ -55,7 +54,7 @@ export default function DetailUmkm({ route, navigation }) {
           <Text style={style.title}>
             IDR {detail.harga}
           </Text>
-          <Text style={{ fontWeight: '800',marginBottom:10 }}>{detail.namaProduk}</Text>
+          <Text style={{ fontWeight: '800', marginTop: 5, marginBottom: 5, fontSize: 18 }}>{detail.namaProduk}</Text>
           <Text style={{ fontWeight: '600' }}>Deskripsi</Text>
           <Text style={style.deskripsi}>
             {detail.deskripsi}
@@ -63,7 +62,7 @@ export default function DetailUmkm({ route, navigation }) {
           <View style={style.contact}>
             <WaIcon />
             <Text style={{ marginLeft: 5, color: '#ffffff' }}>
-          {detail.kontak}
+              {detail.kontak}
             </Text>
           </View>
         </View>
@@ -79,7 +78,7 @@ const style = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   content: {
-    margin: 10,
+    margin: 20,
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -88,7 +87,7 @@ const style = StyleSheet.create({
     height: 203,
   },
   title: {
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#E13A3A'
   },
@@ -133,7 +132,7 @@ const style = StyleSheet.create({
     padding: 6,
     borderRadius: 7,
     width: 139,
-    marginTop:10
+    marginTop: 10
   },
   loadingContainer: {
     flex: 1,

@@ -43,10 +43,9 @@ export default function Ibadah({ navigation }) {
                 <MapIcon />
                 <Text style={styles.txtLocation}>{item.lokasi}</Text>
             </View>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-ibadah', { id: item.id })}>
-                                <Text style={styles.btnText}>Selengkapnya</Text>
+            <TouchableOpacity style={styles.link} onPress={() => navigation.navigate('detail-ibadah', { id: item.id })}>
+                <Text style={{ color: '#0369A1' }}>Selengkapnya</Text>
             </TouchableOpacity>
-           
         </TouchableOpacity>
     );
 
@@ -83,46 +82,47 @@ const styles = StyleSheet.create({
     content: {
         margin: 10,
         flexDirection: 'column',
-        justifyContent: 'center', 
+        justifyContent: 'center',
     },
     listContainer: {
-   justifyContent: 'center',
+        justifyContent: 'center',
     },
     title: {
-          fontSize: 20,
-          paddingTop: 5,
-          paddingLeft: 5,
-          margin: 3,
-          fontWeight: '800'
+        fontSize: 20,
+        paddingTop: 5,
+        paddingLeft: 5,
+        margin: 3,
+        fontWeight: '800'
     },
     jadwal: {
-          flexDirection: 'row',
-          alignItems: 'top',
-          marginTop: 5,
-          paddingLeft: 10
-     },
-     txtJadwal: {
-        paddingLeft: 10,
+        flexDirection: 'row',
+        alignItems: 'top',
+        marginTop: 5,
+        paddingLeft: 10
+    },
+    txtJadwal: {
+        paddingLeft: 5,
         fontSize: 14,
-        paddingRight: 5
-     },
+        paddingRight: 10
+    },
     location: {
         flexDirection: 'row',
         alignItems: 'top',
-        marginTop: 10, 
-        paddingLeft: 10
+        marginTop: 5,
+        paddingLeft: 10,
     },
     txtLocation: {
-     paddingLeft: 10,
-     fontSize: 14,
-     marginRight: 30, 
- }, 
+        color: '#1877F2',
+        paddingLeft: 5,
+        fontSize: 14,
+        marginRight: 30,
+    },
     bg: {
         flex: 1,
         margin: 5,
         backgroundColor: '#FFFFFF',
         borderRadius: 5,
-        elevation: 2, 
+        elevation: 2,
     },
     img: {
         width: '100%',
@@ -135,20 +135,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    btn: {
-        backgroundColor: '#0890EA',
-        width: 100,
-        height: 25,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'flex-end',
-        marginTop: 5,
-        marginBottom: 10,
-        marginRight: 10,
-    },
-    btnText: {
-        color: '#ffffff',
-        fontSize: 12,
- }
+    link: {
+        marginTop: 3,
+        marginLeft: 10,
+        marginBottom: 4 
+    }
 });

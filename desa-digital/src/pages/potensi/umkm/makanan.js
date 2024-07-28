@@ -4,7 +4,9 @@ import HeaderMakanan from '../../../components/layout/headermakanan';
 import { getUmkmMakanan } from '../../../services/desaDigital.services';
 import PhoneIcon from '../../../components/icon/phone';
 import PersonChekIcon from '../../../components/icon/checkperson';
-
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(price);
+};
 export default function UmkmMakanan({ navigation }) {
   const [makanan, setMakanan] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,10 +38,10 @@ export default function UmkmMakanan({ navigation }) {
     <TouchableOpacity style={style.bg} onPress={() => goToDetail(item.id)}>
       <Image source={{ uri: item.gambar || '' }} style={style.img} />
       <Text style={style.title}>{item.namaProduk}</Text>
-      <Text style={style.price}>{item.harga}</Text>
-      <View style={style.location}>
+      <Text style={style.price}>{formatPrice(item.harga)}</Text>
+      <View style={style.kontak}>
         <PhoneIcon />
-        <Text style={style.txtLocation}>{item.kontak}</Text>
+        <Text style={style.txtKontak}>{item.kontak}</Text>
       </View>
       <View style={style.location}>
         <PersonChekIcon />
@@ -82,20 +84,37 @@ const style = StyleSheet.create({
     margin: 10,
     flexDirection: 'column',
     justifyContent: 'center',
-  },
+
+  },  
   listContainer: {
     justifyContent: 'center',
   },
   title: {
-    fontSize: 14,
-    margin: 3,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 6,
+    marginLeft: 10
   },
   price: {
     color: '#E13A3A',
+    marginTop: 6,
+    marginLeft: 10,
     fontSize: 12,
     margin: 3,
   },
+  kontak: {
+    marginTop: 6,
+    marginLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 3,
+  },
+  txtKontak: {
+    color: '#1877F2',
+  },
   location: {
+    marginLeft: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     margin: 3,

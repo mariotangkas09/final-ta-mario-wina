@@ -54,13 +54,13 @@ export default function Homestay({ navigation }) {
                 <MapIcon />
                 <Text style={style.txtLocation}>{item.lokasi}</Text>
             </View>
-            <View style={style.location}>
+            <View style={style.phone}>
                 <PhoneIcon />
-                <Text style={style.txtLocation}>{item.kontak}</Text>
+                <Text style={style.txtPhone}>{item.kontak}</Text>
             </View>
             <Text style={style.deskripsi}>{item.deskripsi}</Text>
-            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('detail-ibadah', { id: item.id })}>
-                                <Text style={style.btnText}>Selengkapnya</Text>
+            <TouchableOpacity style={style.link} onPress={() => navigation.navigate('detail-homestay', { id: item.id })}>
+                <Text style={{ color: '#0369A1' }}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -126,6 +126,7 @@ const style = StyleSheet.create({
         fontSize: 14,
     },
     location: {
+        paddingTop: 5,
         paddingLeft: 5,
         flexDirection: 'row',
         alignItems: 'center',
@@ -134,21 +135,19 @@ const style = StyleSheet.create({
     txtLocation: {
         color: '#1877F2',
     },
-    btn: {
-        backgroundColor: '#0890EA',
-        width: 100,
-        height: 25,
-        borderRadius: 15,
+    phone: {
+        paddingLeft: 5,
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'flex-end',
-        marginTop: 5,
-        marginBottom: 10,
-        marginRight: 10,
+        margin: 3,
     },
-    btnText: {
-        color: '#ffffff',
-        fontSize: 12,
+    txtPhone: {
+        color: '#1877F2',
+    },
+    link: {
+        marginTop: 3,
+        marginLeft: 10,
+        marginBottom: 4 
     },
     bg: {
         flex: 1,

@@ -30,44 +30,39 @@ export default function DetailWisata({ navigation, route }) {
      console.log('Data wisata:', dataWisata);
      return (
           <View style={style.container}>
-               <HeaderDetailWisata navigation={navigation} /> 
+               <HeaderDetailWisata navigation={navigation} />
                <ScrollView>
                     <Image source={{ uri: dataWisata.gambar }} style={style.img} />
-               <View style={style.content}>
-                   
-                    <View style={style.contentType}>
-                         <Text style={style.title}>
-                              {dataWisata && dataWisata[0] && (
-                                   <Text style={style.title}>
-                                        {dataWisata[0].namaObjekWisata}
-                                   </Text>
-                              )}
-                         </Text>
+                    <View style={style.content}>
 
-                         <View style={style.categoriBg}>
-                              <Text style={style.category}>
-                                   {dataWisata.kategori}
+                         <View style={style.contentType}>
+                              <Text style={style.title}>
+                                   {dataWisata.namaObjekWisata}
+                              </Text>
+                              <View style={style.categoriBg}>
+                                   <Text style={style.category}>
+                                        {dataWisata.kategori}
+                                   </Text>
+                              </View>
+                              <View style={style.locationBox}>
+                                   <MapIcon size={21} />
+                                   <Text style={style.txtLocation}>
+                                        {dataWisata.lokasi}
+                                   </Text>
+                              </View>
+                              <View style={style.timeBox}>
+                                   <JamIcon size={21} />
+                                   <Text style={style.txtTime}>
+                                        {dataWisata.waktuOperasi} - Buka : {dataWisata.jamBuka} - {dataWisata.jamTutup} WIB
+                                   </Text>
+                              </View>
+                              <Text style={style.deskripsi}>
+                                   {dataWisata.deskripsi}
                               </Text>
                          </View>
-                         <View style={style.locationBox}>
-                              <MapIcon size={21} />
-                              <Text style={style.txtLocation}>
-                                   {dataWisata.lokasi}
-                              </Text>
-                         </View>
-                         <View style={style.timeBox}>
-                              <JamIcon size={21} />
-                              <Text style={style.txtTime}>
-                                   {dataWisata.waktuOperasi} - Buka : {dataWisata.jamBuka} - {dataWisata.jamTutup} WIB
-                              </Text>
-                         </View>
-                         <Text style={style.deskripsi}>
-                              {dataWisata.deskripsi}
-                         </Text>
                     </View>
-               </View>      
                </ScrollView>
-              
+
           </View>
 
      )
@@ -81,16 +76,16 @@ const style = StyleSheet.create({
 
      },
      content: {
-          margin: 10,
+          margin: 15,
           flexDirection: 'column',
           justifyContent: 'center',
      },
      img: {
-          width: 'full',
+          width: '100%',
           height: 203,
      },
      title: {
-          fontSize: 17,
+          fontSize: 20,
           fontWeight: 'bold'
      },
      categoriBg: {
@@ -107,10 +102,11 @@ const style = StyleSheet.create({
      locationBox: {
           display: 'flex',
           flexDirection: 'row',
+          alignItems: 'center',
           marginTop: 10
      },
      txtLocation: {
-          fontSize: 11,
+          fontSize: 12,
           color: '#333333',
           fontWeight: '500',
           marginLeft: 5
@@ -122,7 +118,7 @@ const style = StyleSheet.create({
           marginTop: 10
      },
      txtTime: {
-          fontSize: 11,
+          fontSize: 12,
           color: '#333333',
           fontWeight: '500',
           marginLeft: 5

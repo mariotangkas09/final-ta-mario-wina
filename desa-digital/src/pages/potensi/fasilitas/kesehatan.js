@@ -53,14 +53,12 @@ export default function Kesehatan({ navigation }) {
                 <MapIcon />
                 <Text style={styles.txtLocation}>{item.lokasi}</Text>
             </View>
-            
             <Text style={styles.informasi}>{item.deskripsi}</Text>
             <View style={styles.location}>
                 <Text style={styles.txtLocation}>{item.kontak}</Text>
             </View>
-
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('kesehatan-detail', { id: item.id })}>
-                                <Text style={styles.btnText}>Selengkapnya</Text>
+            <TouchableOpacity style={styles.link} onPress={() => navigation.navigate('kesehatan-detail', { id: item.id })}>
+                <Text style={{ color: '#0369A1' }}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -118,32 +116,31 @@ const styles = StyleSheet.create({
     },
     txtLocation: {
         color: '#1877F2',
-        paddingLeft: 4,
+        marginLeft: 5,
+        marginRight: 17,
         fontSize: 14
     },
-
     jadwal: {
         flexDirection: 'row',
-        alignItems: 'top',
-        marginTop: 5,
+        alignItems: 'center',
         paddingLeft: 10
-   },
-   txtJadwal: {
-      paddingLeft: 4,
-      fontSize: 14,
-      paddingRight: 5
-   },
-    informasi: {
-        paddingTop: 10,
-        paddingLeft: 10,
-        fontSize: 12,
+    },
+    txtJadwal: {
+        paddingLeft: 4,
+        fontSize: 14,
         paddingRight: 5
+    },
+    informasi: {
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 14,
     },
     bg: {
         flex: 1,
         margin: 5,
         backgroundColor: '#FFFFFF',
         borderRadius: 5,
+        margin: 3,
         elevation: 2,
     },
     img: {
@@ -152,20 +149,8 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
-    btn: {
-        backgroundColor: '#0890EA',
-        width: 100,
-        height: 25,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'flex-end',
-        marginTop: 5,
-        marginBottom: 10,
-        marginRight: 10,
-    },
-    btnText: {
-        color: '#ffffff',
-        fontSize: 12,
+    link: {
+        marginLeft: 10,
+        marginBottom: 4 
     }
 });

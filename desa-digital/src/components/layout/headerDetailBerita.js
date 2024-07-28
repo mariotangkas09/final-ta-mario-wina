@@ -1,11 +1,10 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import ArrowIcon from '../../components/icon/arrowLeft';
+import ArrowIcon from '../icon/arrowLeft';
 
-
-export default function HeaderSuvenir({ navigation }) {
+export default function HeaderDetailBerita({ navigation }) {
      const navigateHome = () => {
-          navigation.navigate('umkm');
+          navigation.navigate('berita');
      };
      return (
           <View style={styles.header}>
@@ -16,7 +15,7 @@ export default function HeaderSuvenir({ navigation }) {
                </View>
                <View>
                     <Text style={styles.title}>
-                         Souvenir
+                         Berita Desa
                     </Text>
                </View>
 

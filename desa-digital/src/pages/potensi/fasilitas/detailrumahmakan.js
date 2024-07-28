@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     des: {
-        textAlign: 'justify',
+        textAlign: 'center',
     },
     lokasi:{
           display:'flex', 

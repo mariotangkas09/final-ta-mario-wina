@@ -85,20 +85,37 @@ const style = StyleSheet.create({
     margin: 10,
     flexDirection: 'column',
     justifyContent: 'center',
-  },
+
+  },  
   listContainer: {
     justifyContent: 'center',
   },
   title: {
-    fontSize: 14,
-    margin: 3,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 6,
+    marginLeft: 10
   },
   price: {
     color: '#E13A3A',
+    marginTop: 6,
+    marginLeft: 10,
     fontSize: 12,
     margin: 3,
   },
+  kontak: {
+    marginTop: 6,
+    marginLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 3,
+  },
+  txtKontak: {
+    color: '#1877F2',
+  },
   location: {
+    marginLeft: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     margin: 3,

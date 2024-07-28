@@ -12,12 +12,12 @@ export default function Bank({ navigation }) {
         const fetchHomestay = async () => {
             try {
                 const response = await getBank();
-                console.log("Response from bank:", response); 
+                console.log("Response from bank:", response);
 
                 if (response.code === 200) {
                     const homestayArray = Object.keys(response.data).map(key => response.data[key]);
                     setHomeStay(homestayArray);
-                    console.log("Homestay data array:", homestayArray); 
+                    console.log("Homestay data array:", homestayArray);
                 } else {
                     console.error('Error fetching fasilitas:', response.message);
                 }
@@ -25,7 +25,7 @@ export default function Bank({ navigation }) {
                 console.error('Error fetching fasilitas:', error);
             } finally {
                 setLoading(false);
-                console.log("Loading status:", loading); 
+                console.log("Loading status:", loading);
             }
         };
         fetchHomestay();
@@ -53,8 +53,8 @@ export default function Bank({ navigation }) {
                 <Text style={style.txtLocation}>{item.lokasi}</Text>
             </View>
             <Text style={style.deskripsi}>{item.deskripsi}</Text>
-            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('bank-detail', { id: item.id })}>
-                                <Text style={style.btnText}>Selengkapnya</Text>
+            <TouchableOpacity style={style.link} onPress={() => navigation.navigate('bank-detail', { id: item.id })}>
+                <Text style={{ color: '#0369A1' }}>Selengkapnya</Text>
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -120,16 +120,16 @@ const style = StyleSheet.create({
         alignItems: 'top',
         marginTop: 5,
         paddingLeft: 10
-   },
-   txtJadwal: {
-      paddingLeft: 4,
-      fontSize: 14,
-      paddingRight: 5
-   },
-   deskripsi: {
-    marginLeft: 10,
-    marginRight: 10,
-    fontSize: 14,
+    },
+    txtJadwal: {
+        paddingLeft: 4,
+        fontSize: 14,
+        paddingRight: 5
+    },
+    deskripsi: {
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 14,
     },
     bg: {
         flex: 1,
@@ -144,20 +144,9 @@ const style = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
-    btn: {
-        backgroundColor: '#0890EA',
-        width: 100,
-        height: 25,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'flex-end',
-        marginTop: 5,
-        marginBottom: 10,
-        marginRight: 10,
+    link: {
+        marginTop: 3,
+        marginLeft: 10,
+        marginBottom: 4 
     },
-    btnText: {
-        color: '#ffffff',
-        fontSize: 12,
-    }
 });

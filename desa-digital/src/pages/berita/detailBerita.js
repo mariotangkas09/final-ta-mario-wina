@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
-import HeaderBerita from "../../components/layout/headernerita";
+import HeaderDetailBerita from "../../components/layout/headerDetailBerita";
 import { getBeritaById } from "../../services/desaDigital.services";
 
 export default function DetailBerita({ navigation, route }) {
@@ -23,7 +23,7 @@ export default function DetailBerita({ navigation, route }) {
   if (!berita) {
     return (
       <View style={styles.container}>
-        <HeaderBerita navigation={navigation} />
+        <HeaderDetailBerita navigation={navigation} />
         <View style={styles.content}>
           <Text>Loading...</Text>
         </View>
@@ -48,7 +48,7 @@ export default function DetailBerita({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <HeaderBerita navigation={navigation} />
+      <HeaderDetailBerita navigation={navigation} />
       <View style={styles.content}>
         <ScrollView>
           <View style={styles.boxImg}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   img: {
-    width: 300,
+    width: "100%",
     height: 200,
     borderRadius: 5
   }

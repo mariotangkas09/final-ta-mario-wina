@@ -133,13 +133,13 @@ export default function Home({ navigation }) {
             return (
                 <View style={styles.cardNews} key={beritaData.id}>
                     <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
-                        <Image source={{ uri: `https://api-admin.desasosordolok.id/images/cover/${beritaData.cover}` }} style={{ width: 95, height: 95, borderRadius: 5 }} />
+                        <Image source={{ uri: `https://api-admin.desasosordolok.id/images/cover/${beritaData.cover}` }} style={{ width: 85, height: 85, borderRadius: 5 }} />
                     </View>
                     <View style={styles.contentNews}>
                         <Text style={styles.judul}>{beritaData.judul_berita}</Text>
                         <Text style={styles.waktu}>{formatDate(beritaData.tgl_publikasi)}</Text>
                         <Text style={styles.deskripsi}>{truncateText(cleanHTMLTags(beritaData.isi_berita), 32)}</Text>
-                        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: 195, marginLeft: 40, marginBottom: 5 }}>
+                        <View style={styles.btnlocation}>
                             <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-berita', { id: beritaData.id })}>
                                 <Text style={styles.btnText}>Selengkapnya</Text>
                             </TouchableOpacity>
@@ -151,14 +151,14 @@ export default function Home({ navigation }) {
             const pengumumanData = item.data;
             return (
                 <View style={styles.cardNews} key={pengumumanData.id}>
-                    <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7, width: 100 }}>
+                    <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
                         <Image source={{ uri: `https://api-admin.desasosordolok.id/api/pengumuman_cover/${pengumumanData.file_pengumuman}` }} style={{ width: 85, height: 85, borderRadius: 5 }} />
                     </View>
                     <View style={styles.contentNews}>
                         <Text style={styles.judul}>{pengumumanData.judul_pengumuman}</Text>
                         <Text style={styles.waktu}>{formatDate(pengumumanData.tgl_publikasi)}</Text>
                         <Text style={styles.deskripsi}>{truncateText(cleanHTMLTags(pengumumanData.deskripsi_pengumuman), 32)}</Text>
-                        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: 195, marginLeft: 50, marginBottom: 5 }}>
+                        <View style={styles.btnlocation}>
                             <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-pengumuman', { id: pengumumanData.id })}>
                                 <Text style={styles.btnText}>Selengkapnya</Text>
                             </TouchableOpacity>
@@ -180,25 +180,25 @@ export default function Home({ navigation }) {
                 ListHeaderComponent={
                     <View style={styles.content}>
                         <View style={styles.dataStatistik}>
-                        <     View style={styles.dataPenduduk}>
-                                   <View style={styles.box}>
-                                        <Text style={styles.title}>Total Penduduk</Text>
-                                        <View style={styles.countContainer}>
-                                             <UserIcon color='#ffffff' />
-                                             <Text style={styles.count}>{penduduk.total} Jiwa</Text>
-                                        </View>
-                                   </View>
-                                   </View>
-                                   <View style={styles.dataPenduduk}>
-                                   <View style={styles.box}>
-                                        <Text style={styles.title}>Statistik Penduduk</Text>
-                                        <View style={styles.countLP}>
-                                             <Text style={styles.countText}>{penduduk.perempuan} Jiwa Perempuan</Text>
-                                             <Text style={styles.countSeparator}>|</Text>
-                                             <Text style={styles.countText2}>{penduduk.laki} Jiwa Laki-laki</Text>
-                                        </View>
-                                   </View>
-                              </View>
+                            <     View style={styles.dataPenduduk}>
+                                <View style={styles.box}>
+                                    <Text style={styles.title}>Total Penduduk</Text>
+                                    <View style={styles.countContainer}>
+                                        <UserIcon color='#ffffff' />
+                                        <Text style={styles.count}>{penduduk.total} Jiwa</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.dataPenduduk}>
+                                <View style={styles.box}>
+                                    <Text style={styles.title}>Statistik Penduduk</Text>
+                                    <View style={styles.countLP}>
+                                        <Text style={styles.countText}>{penduduk.perempuan} Jiwa Perempuan</Text>
+                                        <Text style={styles.countSeparator}>|</Text>
+                                        <Text style={styles.countText2}>{penduduk.laki} Jiwa Laki-laki</Text>
+                                    </View>
+                                </View>
+                            </View>
                         </View>
                         <View style={styles.Underline}>
                             <Underline />
@@ -212,165 +212,167 @@ export default function Home({ navigation }) {
     );
 }
 const styles = StyleSheet.create({
-     container: {
-         flex: 1,
-         flexDirection: 'column',
-         justifyContent: 'space-between',
-         backgroundColor: '#ffffff',
-     },
-     content: {
-         flex: 1,
-         marginBottom: 10,
-     },
-     dataPenduduk: {
-         backgroundColor: '#0D9276',
-         width: 143,
-         height: 90,
-         borderRadius: 8,
-     },
-     title: {
-         color: '#FFFFFF',
-         fontFamily: 'Roboto',
-         fontSize: 12,
-         fontWeight: '400',
-         letterSpacing: 0.012,
-         paddingLeft: 5,
-         paddingTop: 14,
-     },
-     count: {
-          color: '#FFFFFF',
-          width: 129,
-          height: 25,
-          fontFamily: 'Roboto',
-          fontSize: 20,
-          fontWeight: '900',
-          letterSpacing: 0.02,
-          paddingLeft: 7
-     },
-     countContainer: {
-         display: 'flex',
-         flexDirection: 'row',
-         alignItems: 'center',
-         marginTop: 10,
-         paddingLeft: 5
-     },
-     countText: {
-          fontSize: 12,
-          color: '#ffffff',
-          paddingLeft: 5,
-          flexShrink: 1,
-      },
-     countText2: {
-          fontSize: 12,
-          color: '#ffffff',
-          paddingLeft: 2,
-          flexShrink: 1,
-     },     
-     countSeparator: {
-         fontSize: 38,
-         color: '#ffffff',
-     },
-     countLP: {
-         display: 'flex',
-         flexDirection: 'row',
-         justifyContent: 'space-between',
-         alignItems: 'center',
-     },
-     box: {
-         padding: 5,
-     },
-     dataStatistik: {
-         display: 'flex',
-         flexDirection: 'row',
-         justifyContent: 'space-between',
-         marginTop: 30,
-         paddingLeft: 35,
-         paddingRight: 35,
-     },
-     Underline: {
-         marginTop: 10,
-         display: 'flex',
-         flexDirection: 'row',
-         justifyContent: 'center',
-     },
-     menuItemContent: {
-         flex: 1,
-         justifyContent: 'center',
-         alignItems: 'center',
-         paddingHorizontal: 10,
-     },
-     menuItem: {
-         flex: 1,
-         alignItems: 'center',
-         justifyContent: 'center',
-         margin: 10,
-     },
-     titleNews: {
-         backgroundColor: 'rgba(13, 146, 118, 0.09)',
-         width: 160,
-         borderRadius: 15,
-         justifyContent: 'center',
-         height: 26,
-         marginLeft: 30,
-         marginTop: 15,
-     },
-     textTitleNews: {
-         textAlign: 'center',
-         color: '#0D9276',
-         fontWeight: '800'
-     },
-     judul: {
-         fontSize: 12,
-         fontWeight: '800',
-     },
-     waktu: {
-         fontSize: 10,
-         color: 'rgba(103, 106, 108, 0.7)',
-     },
-     deskripsi: {
-         fontSize: 12,
-         width: 195,
-     },
-     btn: {
-         backgroundColor: '#0890EA',
-         width: 100,
-         height: 25,
-         borderRadius: 15,
-         display: 'flex',
-         alignItems: 'center',
-         justifyContent: 'center',
-     },
-     btnText: {
-         color: '#ffffff',
-         fontSize: 12,
-     },
-     cardNews: {
-          width: 365,
-          display: 'flex',
-          flexDirection: 'row',
-          backgroundColor: '#FFF',
-          elevation: 2,  
-          marginTop: 15,
-          marginLeft: 30,
-          paddingRight: 15,
-          borderRadius: 5,
-          shadowColor: '#000000',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 0.25,
-          shadowRadius: 2,
-     },
-     contentNews: {
-         marginLeft: 5,
-         width: 195,
-         paddingRight: 16,
-         paddingTop: 7,
-         paddingBottom: 7,
-     },
-     boxCard: {
-         flex: 1,
-         display: "flex",
-         flexDirection: 'column',
-         justifyContent: 'center',
-         alignItems: 'center',
-     },
- }); 
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        backgroundColor: '#ffffff',
+    },
+    content: {
+        flex: 1,
+        marginBottom: 10,
+    },
+    dataPenduduk: {
+        backgroundColor: '#0D9276',
+        width: 143,
+        height: 90,
+        borderRadius: 8,
+    },
+    title: {
+        color: '#FFFFFF',
+        fontFamily: 'Roboto',
+        fontSize: 12,
+        fontWeight: '400',
+        letterSpacing: 0.012,
+        paddingLeft: 5,
+        paddingTop: 14,
+    },
+    count: {
+        color: '#FFFFFF',
+        width: 129,
+        height: 25,
+        fontFamily: 'Roboto',
+        fontSize: 20,
+        fontWeight: '900',
+        letterSpacing: 0.02,
+        paddingLeft: 7
+    },
+    countContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+        paddingLeft: 5
+    },
+    countText: {
+        fontSize: 12,
+        color: '#ffffff',
+        paddingLeft: 5,
+        flexShrink: 1,
+    },
+    countText2: {
+        fontSize: 12,
+        color: '#ffffff',
+        paddingLeft: 2,
+        flexShrink: 1,
+    },
+    countSeparator: {
+        fontSize: 38,
+        color: '#ffffff',
+    },
+    countLP: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    box: {
+        padding: 5,
+    },
+    dataStatistik: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 30,
+        paddingLeft: 35,
+        paddingRight: 35,
+    },
+    Underline: {
+        marginTop: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    menuItemContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+    },
+    menuItem: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+    },
+    titleNews: {
+        backgroundColor: 'rgba(13, 146, 118, 0.09)',
+        width: 160,
+        borderRadius: 15,
+        justifyContent: 'center',
+        height: 26,
+        marginLeft: 30,
+        marginTop: 15,
+    },
+    textTitleNews: {
+        textAlign: 'center',
+        color: '#0D9276',
+        fontWeight: '800'
+    },
+    judul: {
+        fontSize: 12,
+        fontWeight: '800',
+    },
+    waktu: {
+        fontSize: 10,
+        color: 'rgba(103, 106, 108, 0.7)',
+    },
+    deskripsi: {
+        fontSize: 12,
+        width: 195,
+    },
+    btn: {
+        backgroundColor: '#0890EA',
+        width: 100,
+        height: 25,
+        borderRadius: 15,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btnText: {
+        color: '#ffffff',
+        fontSize: 12,
+    },
+    btnlocation: {
+        position: 'absolute',
+        left: 129,
+        bottom: 5,
+    },
+    cardNews: {
+        width: 345,
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: '#FFF',
+        elevation: 2,
+        marginTop: 15,
+        marginLeft: 30,
+        paddingRight: 15,
+        borderRadius: 5,
+
+    },
+    contentNews: {
+        marginLeft: 5,
+        width: 195,
+        paddingRight: 16,
+        paddingTop: 7,
+        paddingBottom: 7,
+    },
+    boxCard: {
+        flex: 1,
+        display: "flex",
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+}); 

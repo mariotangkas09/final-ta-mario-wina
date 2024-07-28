@@ -10,7 +10,7 @@ export default function Berita({ navigation }) {
           const fetchBerita = async () => {
                try {
                     const allBerita = await getBerita();
-                    
+
                     setBerita(allBerita);
                } catch (error) {
                     console.error('Error fetching user list:', error);
@@ -41,28 +41,28 @@ export default function Berita({ navigation }) {
                <HeaderBerita navigation={navigation} />
                <View style={styles.content}>
                     <View style={styles.boxSearch}>
-                         <TextInput placeholder='Cari' style={styles.textInput}   onChangeText={text => setSearchQuery(text)}/>
+                         <TextInput placeholder='Cari' style={styles.textInput} onChangeText={text => setSearchQuery(text)} />
                          <FontAwesome name='search' size={18} color='grey' style={styles.search} />
                     </View>
                     <ScrollView >
-                         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',marginBottom:10,alignItems:'center' }}>
-                         {filteredBerita.map(beritaData => (
-                                        <View style={styles.cardNews} key={beritaData.id}>
-                                             <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
+                         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: 10, alignItems: 'center' }}>
+                              {filteredBerita.map(beritaData => (
+                                   <View style={styles.cardNews} key={beritaData.id}>
+                                        <View style={{ paddingLeft: 16, paddingTop: 7, paddingBottom: 7 }}>
                                              <Image source={{ uri: `https://api-admin.desasosordolok.id/images/cover/${beritaData.cover}` }} style={{ width: 95, height: 95, borderRadius: 5 }} />
-                                             </View>
-                                             <View style={styles.contentNews}>
-                                                  <Text style={styles.judul}>{beritaData.judul_berita}</Text>
-                                                  <Text style={styles.waktu}>{formatDate(beritaData.tgl_publikasi)}</Text>
-                                                  <Text style={styles.deskripsi}>{truncateText(cleanHTMLTags(beritaData.isi_berita), 32)}</Text>
-                                                  <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: 195 }}>
+                                        </View>
+                                        <View style={styles.contentNews}>
+                                             <Text style={styles.judul}>{beritaData.judul_berita}</Text>
+                                             <Text style={styles.waktu}>{formatDate(beritaData.tgl_publikasi)}</Text>
+                                             <Text style={styles.deskripsi}>{truncateText(cleanHTMLTags(beritaData.isi_berita), 32)}</Text>
+                                             <View style={styles.btnlocation}>
                                                   <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-berita', { id: beritaData.id })}>
-                                                            <Text style={styles.btnText}>Selengkapnya</Text>
-                                                       </TouchableOpacity>
-                                                  </View>
+                                                       <Text style={styles.btnText}>Selengkapnya</Text>
+                                                  </TouchableOpacity>
                                              </View>
                                         </View>
-                                   ))}
+                                   </View>
+                              ))}
                          </View>
                     </ScrollView>
                </View>
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
      content: {
           flex: 1,
           marginBottom: 10,
-          display:'flex',
-          justifyContent:'center',
+          display: 'flex',
+          justifyContent: 'center',
           marginLeft: 15,
           marginRight: 15
      },
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
           borderRadius: 30,
           width: '100%',
           padding: 8,
-          paddingLeft:20
+          paddingLeft: 20
      },
      boxSearch: {
           flexDirection: 'row',
@@ -125,15 +125,19 @@ const styles = StyleSheet.create({
           borderRadius: 15,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
      },
      btnText: {
           color: '#ffffff',
           fontSize: 12,
      },
+     btnlocation: {
+          position: 'absolute',
+          left: 100,
+          bottom: 8,
+     },
      cardNews: {
           width: 325,
-
           display: 'flex',
           flexDirection: 'row',
           backgroundColor: '#ffffff',
