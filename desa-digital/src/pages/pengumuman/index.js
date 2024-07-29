@@ -69,7 +69,7 @@ export default function Pengumuman({ navigation }) {
                                                   {truncateText(cleanHTMLTags(pengumumanData.deskripsi_pengumuman), 32)}
                                              </Text>
                                              <View style={styles.btnlocation}>
-                                                  <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-berita', { id: beritaData.id })}>
+                                                  <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('detail-pengumuman', { id: pengumumanData.id })}>
                                                        <Text style={styles.btnText}>Selengkapnya</Text>
                                                   </TouchableOpacity>
                                              </View>
